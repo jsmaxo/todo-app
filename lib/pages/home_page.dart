@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/model/todo_list.dart';
 import 'package:to_do_app/utils/colors.dart';
 import 'package:to_do_app/widgets/search_box.dart';
 import 'package:to_do_app/widgets/to_do_item.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+ HomePage({super.key});
+
+  final todosList = Todo.;
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +58,6 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
-              ToDoItem(),
               ToDoItem(),
             ],
           ),
