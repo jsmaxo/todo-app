@@ -35,36 +35,100 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 15,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 15,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SearchBox(),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    "All To Docs",
+                    style: TextStyle(
+                      fontSize: 33,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  for (ToDo todo in todosList)
+                    ToDoItem(
+                      todos: todo,
+                    ),
+                ],
+              ),
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SearchBox(),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                "All To Docs",
-                style: TextStyle(
-                  fontSize: 33,
-                  fontWeight: FontWeight.w500,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      bottom: 20,
+                      right: 20,
+                      left: 20,
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 20,
+                          spreadRadius: 0.0,
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Add new Todo item",
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              for (ToDo todo in todosList)
-                ToDoItem(
-                  todos: todo,
+                Container(
+                  margin: EdgeInsets.only(
+                    right: 20,
+                    left: 20,
+                    bottom: 20,
+                  ),
+                  child: ElevatedButton(
+                    child: Text(
+                      "+",
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: tWhite,
+                      ),
+                    ),
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 62, 39, 176),
+                      minimumSize: Size(60, 60),
+                      elevation: 20,
+                    ),
+                  ),
                 ),
-            ],
-          ),
-        ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

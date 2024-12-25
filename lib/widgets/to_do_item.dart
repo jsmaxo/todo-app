@@ -23,7 +23,7 @@ class ToDoItem extends StatelessWidget {
         ),
         tileColor: tWhite,
         leading: Icon(
-          Icons.check_box,
+          todos.isDone ? Icons.check_box : Icons.check_box_outline_blank,
           color: tBlue,
         ),
         title: Text(
@@ -31,7 +31,7 @@ class ToDoItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            decoration: TextDecoration.lineThrough,
+            decoration: todos.isDone ? TextDecoration.lineThrough : null,
           ),
         ),
         trailing: Container(
