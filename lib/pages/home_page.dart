@@ -5,9 +5,9 @@ import 'package:to_do_app/widgets/search_box.dart';
 import 'package:to_do_app/widgets/to_do_item.dart';
 
 class HomePage extends StatelessWidget {
- HomePage({super.key});
+  HomePage({super.key});
 
-  final todosList = Todo.;
+  final todosList = ToDo.todoList();
 
   @override
   Widget build(BuildContext context) {
@@ -35,30 +35,33 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 20,
             horizontal: 15,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SearchBox(),
-              SizedBox(
+              const SearchBox(),
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 "All To Docs",
                 style: TextStyle(
                   fontSize: 33,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              ToDoItem(),
+              for (ToDo todo in todosList)
+                ToDoItem(
+                  todos: todo,
+                ),
             ],
           ),
         ),
